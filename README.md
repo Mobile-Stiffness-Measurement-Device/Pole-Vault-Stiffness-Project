@@ -6,23 +6,23 @@
 ---
 
 ## Overview
-This project aims to design and prototype the world’s first **mobile device to measure the relative stiffness of pole vaulting poles in real time**.  
+This project aims to design and prototype the world’s first mobile device to measure the relative stiffness of pole vaulting poles in real time.  
 
-Currently, stiffness measurements are only performed during the manufacturing phase, using large and immobile rigs. Athletes and coaches have limited ability to track stiffness changes over a pole’s lifespan or compare across different brands. Our goal is to create a **portable, repeatable, and easy-to-use solution** for field measurements.  
+Currently, stiffness measurements are only performed during the manufacturing phase, using large and immobile rigs. Athletes and coaches have limited ability to track stiffness changes over a pole’s lifespan or compare across different brands. Our goal is to create a portable, repeatable, and easy-to-use solution for field measurements.  
 
 ---
 
 ## Problem
-- Existing stiffness measurement tools are **large and lab-based**.  
-- There is **no easy way** to check how poles evolve under **different environments** (temperature, humidity, time).  
-- Manufacturers use **different standards** for flex numbers, making comparison difficult.  
+- Existing stiffness measurement tools are large and lab-based.  
+- There is no easy way to check how poles evolve under different environments (temperature, humidity, time).  
+- Manufacturers use different standards for flex numbers, making comparison difficult.  
 
 ---
 
 ## Concept
-The device applies a **controlled displacement** to a mounted pole using a **stepper-motor-driven actuator**. A **force sensor** measures the load applied, while the stepper motor steps give displacement.  
+The device applies a controlled displacement to a mounted pole using a stepper-motor-driven actuator. A force sensor measures the load applied, while the stepper motor steps give displacement.  
 
-From the force–displacement data, the **relative stiffness** is calculated:  
+From the force–displacement data, the relative stiffness is calculated:  
 
 \[
 k = \frac{ΔF}{Δx}
