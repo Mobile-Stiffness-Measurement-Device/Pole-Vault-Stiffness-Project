@@ -1,5 +1,4 @@
 # Pole Vault Stiffness Project
-> Mobile device to measure relative stiffness of pole vaulting poles from force–displacement data.
 
 📍 KTH CM2024 – Technology & Health / Sports Technology  
 👥 Student Team Project
