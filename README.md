@@ -1,76 +1,72 @@
 # Pole Vault Stiffness Project
+> Mobile device to measure relative stiffness of pole vaulting poles from force–displacement data.
 
-📍 KTH CM2024 – Technology and Health / Sports Technology  
-👥 Student Team Project  
+📍 KTH CM2024 – Technology & Health / Sports Technology  
+👥 Student Team Project
 
 ---
 
 ## Overview
-This project aims to design and prototype the world’s first mobile device to measure the relative stiffness of pole vaulting poles in real time.  
-
-Currently, stiffness measurements are only performed during the manufacturing phase, using large and immobile rigs. Athletes and coaches have limited ability to track stiffness changes over a pole’s lifespan or compare across different brands. Our goal is to create a portable, repeatable, and easy-to-use solution for field measurements.  
+We are building a mobile, field-ready device that measures the relative stiffness of pole vault poles in real time using force–displacement data. The device applies a controlled displacement with a stepper-motor actuator while a force sensor records load, enabling athletes, coaches, and manufacturers to track stiffness over time, compare brands, and evaluate environmental effects (temperature, humidity).
 
 ---
 
 ## Problem
 - Existing stiffness measurement tools are large and lab-based.  
-- There is no easy way to check how poles evolve under different environments (temperature, humidity, time).  
-- Manufacturers use different standards for flex numbers, making comparison difficult.  
+- There is no easy way to monitor how poles evolve across environmental conditions (temperature, humidity) and time/use.  
+- Manufacturers use different flex standards, complicating comparison.  
+- Field measurements need repeatability and portability.
 
 ---
 
 ## Concept
-The device applies a controlled displacement to a mounted pole using a stepper-motor-driven actuator. A force sensor measures the load applied, while the stepper motor steps give displacement.  
-
-From the force–displacement data, the relative stiffness is calculated:  
+A stepper-motor-driven actuator (via DRV8825) applies a controlled displacement to a mounted pole. A force sensor (inline with the rope/load path) measures the applied load. Displacement is derived from step counts and mechanics (lead/microstepping), and paired with force to compute relative stiffness:
 
 \[
-k = \frac{ΔF}{Δx}
+k = \frac{\Delta F}{\Delta x}
 \]
 
-Data can then be:  
-- **Saved** per pole (brand, length, flex rating, date).  
-- **Analyzed** for environmental effects (temperature, humidity).  
-- **Compared** across different brands and pole models.  
+We store results with metadata (pole brand, length, flex, date, humidity, temperature) to:
+- **Save** and organize measurements per pole  
+- **Analyze** environmental effects (humidity, temperature, time)  
+- **Compare** stiffness across brands and models  
+- **Export** results to CSV/JSON for later analysis
 
 ---
 
 ## Hardware System
-- **DC Power Supply** → provides power to electronics and motor.  
-- **Raspberry Pi Pico** → main microcontroller for motor control and sensor acquisition.  
-- **DRV8825 Driver** → drives the stepper motor.  
-- **Stepper Motor + Rope** → applies controlled displacement on the pole.  
-- **Force Sensor** → measures pulling force in real time.  
+- **DC Power Supply** → provides power to electronics and motor  
+- **Raspberry Pi Pico** (MicroPython) → motor control & sensor acquisition  
+- **DRV8825 Driver** → drives the stepper motor (microstepping)  
+- **Stepper Motor + Rope** → applies controlled displacement to the pole  
+- **Force Sensor** → measures applied load (via load cell + ADC, e.g., HX711)  
+- **Structure/Fixture** → holds the pole, aligns the load path, ensures safety and repeatability
+
+> _Planned_: add a wiring diagram and photo in `hardware/wiring/`.
 
 ---
 
 ## Software & Data
-- **Firmware** (Pico, MicroPython/C): controls motor steps, streams force data.  
-- **Acquisition Scripts** (Python, PC): logs force–displacement data to CSV.  
-- **Analysis Toolkit** (Python, Jupyter):  
-  - Stiffness vs. displacement curves  
-  - Stiffness over time/environment  
-  - Brand-to-brand comparisons  
+- **Firmware** (Pico, MicroPython): generates steps, reads force sensor, streams CSV over USB serial  
+- **Acquisition** (Python on PC): opens serial port, logs time-stamped force–displacement data to `data/raw/*.csv`  
+- **Analysis** (Python/Jupyter): processes and visualizes stiffness curves, compares tests/brands, overlays environment
+
+**Core analyses**:
+- Stiffness vs. displacement curve  
+- Relative stiffness over time / environment (temperature, humidity)  
+- Cross-brand comparisons (same pole length & flex rating)
 
 ---
 
 ## Features
-- Mobile and field-ready (portable setup).  
-- Real-time data display and logging.  
-- Save results per pole with metadata (brand, length, flex, date, humidity, temperature).  
-- Generate stiffness curves and compare across tests.  
-- Future app integration (BLE or USB) for direct display and data management.  
-
----
-
-## Workstreams
-- **Electronics** → Pico firmware, DRV8825 driver control, force sensor integration.  
-- **Mechanics** → Frame, stepper mount, rope/pulley system, sensor placement.  
-- **Assembly** → Integrating electronics, wiring, and structural parts.  
-- **Database** → Organizing test metadata (pole model, brand, flex, temp, humidity).  
-- **App** → Mobile interface for live display, saving, and comparing poles.  
+- Portable, field-ready workflow  
+- Real-time streaming + logging (CSV)  
+- Per-pole data and metadata storage  
+- Plots for stiffness vs. displacement and environment overlays  
+- (Planned) BLE/USB app for live display and comparisons
 
 ---
 
 ## Repository Structure
+
 
