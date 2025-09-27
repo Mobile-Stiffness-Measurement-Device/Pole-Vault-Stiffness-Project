@@ -67,8 +67,8 @@ We store results with metadata (pole brand, length, flex, date, humidity, temper
 ## 📊 Project Presentation
 Our final presentation summarizing the project goals, design, and results:  
 
-- [Download PowerPoint (.pptx)](docs/presentation_final.pptx)  
-- [View PDF version](docs/presentation_final.pdf)  
+- [Download PowerPoint (.pptx)](docs/Half_time_presentation.pptx)  
+- [View PDF version](docs/Half_Time_Presentation.pdf)  
 
 
 
