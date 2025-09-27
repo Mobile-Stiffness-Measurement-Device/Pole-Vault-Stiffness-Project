@@ -21,9 +21,7 @@ We are building a mobile, field-ready device that measures the relative stiffnes
 ## Concept
 A stepper-motor-driven actuator (via DRV8825) applies a controlled displacement to a mounted pole. A force sensor (inline with the rope/load path) measures the applied load. Displacement is derived from step counts and mechanics (lead/microstepping), and paired with force to compute relative stiffness:
 
-\[
-k = \frac{\Delta F}{\Delta x}
-\]
+\[k = \frac{\Delta F}{\Delta x}\]
 
 We store results with metadata (pole brand, length, flex, date, humidity, temperature) to:
 - **Save** and organize measurements per pole  
