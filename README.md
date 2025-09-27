@@ -64,6 +64,11 @@ We store results with metadata (pole brand, length, flex, date, humidity, temper
 
 ---
 
-## Repository Structure
+## 📊 Project Presentation
+Our final presentation summarizing the project goals, design, and results:  
+
+- [Download PowerPoint (.pptx)](docs/presentation_final.pptx)  
+- [View PDF version](docs/presentation_final.pdf)  
+
 
 
